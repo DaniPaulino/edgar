@@ -10,7 +10,7 @@ app = Flask(__name__)
 def index():
   return render_template('index.html', nome='Análise de Atrito')
 
-@app.route('/Atrition', methods=['POST'])
+@app.route('/predicao', methods=['POST'])
 def predicao():
   Age = request.form['Age']
   YearsAtCompany = request.form['YearsAtCompany']
@@ -22,7 +22,7 @@ def predicao():
 
   array=[[str(Age), str(YearsAtCompany), str(Department), str(JobSatisfaction), str(MaritalStatus), str(WorkLifeBalance)]]
 
-  Atrition = model.predict(array)
+  predicao = model.predict(array)
 
   return render_template('resposta.html', predicao=predicao[0])
 
